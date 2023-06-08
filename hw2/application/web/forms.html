@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Simple DB App</title>
+        <script>
+            function submitForm(form, method) {
+                var vals = [];
+                
+                for (var n=0; n < form.elements.length; n++) {
+                    if(form.elements[n].className === 'toSubmit') {
+                        vals.push(form.elements[n].name + "=" + form.elements[n].value);
+                    }
+                }
+                
+                window.parent.document.getElementById('resultsFrame').contentWindow.location = method + "?" + vals.join("&");
+            }
+        </script>
+    </head>
+    
+    <body>
+        <table width="100%" height="100%"  border='2'>
+            <tr>
+                <td>
+                    <h2> findTrips</h2>
+                    <form>
+                        Branch id: <input type="text" class="toSubmit" name="x" /><br /> 
+						Start date: <input type="text" class="toSubmit" name="a" /><br /> 
+						End date: <input type="text" class="toSubmit" name="b" /><br />
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, ' findTrips')" />
+                    </form>
+                </td>
+
+                <td>
+                    <h2>giveAway</h2>
+                    <form>
+                        N: <input type="text" class="toSubmit" name="N" /><br /> 
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'giveAway')" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+			    <td>
+                    <h2>findRevenue</h2>
+                    <form>
+                        Sorting order: <input type="text" class="toSubmit" name="x" /><br />						  
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'findRevenue')" />
+                    </form>
+                </td>
+                <td>
+                    <h2>bestClient</h2>
+                    <form>
+                        Best: <input type="text" class="toSubmit" name="x" /><br />						 						
+                        <input type="button" name="button" value="Search" onClick="submitForm(this.form, 'bestClient')" />
+                    </form>
+                </td>
+            </tr>
+		</tr>
+        </table>
+    </body>
+</html>
